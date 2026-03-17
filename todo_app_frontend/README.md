@@ -1,82 +1,93 @@
-# Lightweight React Template for KAVIA
+# React To‑Do App (Frontend)
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+## Overview
+
+This folder contains the React frontend for a simple to-do list application. The app is intended to provide a clean, simple UI for managing todos entirely in the browser, without any backend service.
+
+The application is run using Create React App (`react-scripts`).
 
 ## Features
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+This project’s intended functionality includes:
 
-## Getting Started
+- Adding new todos.
+- Marking todos as complete or incomplete.
+- Deleting todos.
+- Filtering the list by status (all, active, completed).
+- Persisting todos in the browser using localStorage so that reloads keep your list.
 
-In the project directory, you can run:
+## Persistence (localStorage)
 
-### `npm start`
+Todo data is designed to be saved in the browser’s localStorage. This means:
 
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- No backend or database is required.
+- Todos are stored per browser profile and per origin (URL).
+- Clearing browser storage/site data will remove saved todos.
 
-### `npm test`
+## Getting started
 
-Launches the test runner in interactive watch mode.
+### Install dependencies
 
-### `npm run build`
+From this folder:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-## Customization
-
-### Colors
-
-The main brand colors are defined as CSS variables in `src/App.css`:
-
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
+```bash
+npm install
 ```
 
-### Components
+### Run the frontend preview (development)
 
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
+```bash
+npm start
+```
 
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
+Then open:
 
-## Learn More
+- http://localhost:3000
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If port 3000 is unavailable, Create React App may prompt to use another port when run interactively. In CI or non-interactive contexts, configure the port via environment variables or ensure 3000 is free.
 
-### Code Splitting
+### Run tests
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm test
+```
 
-### Analyzing the Bundle Size
+### Build for production
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+npm run build
+```
 
-### Making a Progressive Web App
+The production build output is generated in `build/`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Environment variables
 
-### Advanced Configuration
+This project includes a `.env` file in this directory. In Create React App, only variables prefixed with `REACT_APP_` are embedded into the frontend bundle.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The currently defined variables are:
 
-### Deployment
+- `REACT_APP_API_BASE`: Base URL for API calls (may be unused for a localStorage-only app).
+- `REACT_APP_BACKEND_URL`: Backend URL (may be unused).
+- `REACT_APP_FRONTEND_URL`: The frontend URL.
+- `REACT_APP_WS_URL`: WebSocket URL (may be unused).
+- `REACT_APP_NODE_ENV`: Environment name (for example, `development`).
+- `REACT_APP_NEXT_TELEMETRY_DISABLED`: Telemetry control flag.
+- `REACT_APP_ENABLE_SOURCE_MAPS`: Whether source maps are enabled.
+- `REACT_APP_PORT`: Preferred dev server port (commonly 3000).
+- `REACT_APP_TRUST_PROXY`: Proxy trust flag (usually unused in CRA).
+- `REACT_APP_LOG_LEVEL`: Log level (app-dependent).
+- `REACT_APP_HEALTHCHECK_PATH`: Healthcheck path (app-dependent).
+- `REACT_APP_FEATURE_FLAGS`: Feature flag configuration (app-dependent).
+- `REACT_APP_EXPERIMENTS_ENABLED`: Experiment toggle.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+After changing `.env`, restart the dev server so changes take effect.
 
-### `npm run build` fails to minify
+## Technology
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- React
+- Create React App (`react-scripts`)
+- Vanilla CSS for styling
+
+## Repository note
+
+This is a frontend-only project. There is no backend container and no database by design.
